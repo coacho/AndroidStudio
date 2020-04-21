@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="edit_evenement" type="id" />
+    <item name="button_save" type="id" />
+    <item name="recyclerview" type="id" />
+    <item name="textView" type="id" />
+    <item name="action_settings" type="id" />
+    <item name="diffuseMessage" type="id" />
+    <item name="navigateur" type="id" />
+    <item name="toolb" type="id" />
+</resources>

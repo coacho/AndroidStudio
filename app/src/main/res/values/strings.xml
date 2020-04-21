@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">appikation</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_competence">Evenements</string>
+    <string name="button_save">Sauvegarde</string>
+    <string name="empty_not_saved">Evenement vide: non sauvegardé</string>
+    <string name="supprime_tout"> Supprimez touts les évènements</string>
+</resources>
