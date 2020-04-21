@@ -15,7 +15,7 @@ public class AfficheEvenement extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceStates) {
         super.onCreate(savedInstanceStates);
-        setContentView(R.layout.affiche_evenement_test);
+        setContentView(R.layout.content_affiche_evenement_test);
 
         Intent intent = getIntent();
 
