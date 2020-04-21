@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class EvenementViewModel  extends AndroidViewModel {
+public class EvenementViewModel  extends AndroidViewModel {
 
         private EvenementRepository monRepository;
         private LiveData<List<Evenement>> mesEvenements;
@@ -28,7 +28,7 @@ class EvenementViewModel  extends AndroidViewModel {
 
         public void update(Evenement unEvenement) { monRepository.updateEvenement(unEvenement); }
 
-        public void delete(Evenement unEvenement) { monRepository.deleteEvenement(unEvenement); }
+        public void delete(Evenement unEvenementASupprimer) { monRepository.deleteEvenement(unEvenementASupprimer); }
 
         public void  supprimeTous() { monRepository.supprimeTous();}
 

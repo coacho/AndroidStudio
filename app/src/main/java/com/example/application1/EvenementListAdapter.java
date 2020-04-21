@@ -24,7 +24,7 @@ public class EvenementListAdapter extends RecyclerView.Adapter<EvenementListAdap
     }
 
     private final LayoutInflater monInflateur;
-    private List<Evenement> mesEvenements; //cache des evenments
+    private List<Evenement> mesEvenements; //cache des evenements
     /*
      *       ( °)>
      *    ___//         ( °)< coin coin
@@ -47,7 +47,7 @@ public class EvenementListAdapter extends RecyclerView.Adapter<EvenementListAdap
             holder.evenementItemView.setText(evenementEnCour.getNomEvenement());
         }
         else { // kein evenement nada none
-            holder.evenementItemView.setText("Glandu tu fait rien!!! Du bist Scheiß");
+            holder.evenementItemView.setText("Rien à afficher");
         }
 
     }

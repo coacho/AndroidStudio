@@ -3,10 +3,8 @@ package com.example.application1;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -20,27 +18,32 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
+
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "WOLOLO";
-    private static final int NEW_EVENEMENT_ACTIVITY_REQUEST_CODE = 1 ;
+    public static final int NEW_EVENEMENT_ACTIVITY_REQUEST_CODE = 1 ;
     public EvenementListAdapter adapter;
     private EvenementViewModel unEvenementViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolb = findViewById(R.id.toolb);
+        Toolbar toolb = (Toolbar) findViewById(R.id.toolb);
         setSupportActionBar(toolb);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NouvelleEvenement.class);
-                startActivityForResult( intent, NEW_EVENEMENT_ACTIVITY_REQUEST_CODE);
+            public void onClick(View view){
+            Intent intent = new Intent(MainActivity.this, NouvelEvenement.class);
+            startActivityForResult( intent, NEW_EVENEMENT_ACTIVITY_REQUEST_CODE);
             }
         });
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -49,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         unEvenementViewModel = ViewModelProviders.of(this).get(EvenementViewModel.class);
-        unEvenementViewModel.getMesEvenements().observe(this, new Observer<List<Evenement>>(){
-            public void onChanged(List<Evenement> evenements){
+        unEvenementViewModel.getMesEvenements().observe(this, new Observer<List<Evenement>>() {
+            @Override
+            public void onChanged(List<Evenement> evenements) {
                 adapter.setMesEvenements(evenements);
             }
         });
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onMove(@NonNull RecyclerView recyclerView,
                               @NonNull RecyclerView.ViewHolder origine,
                               @NonNull RecyclerView.ViewHolder destination) {
-            int position_origin = origine.getAdapterPosition();
+            int position_origin = origine.getAdapterPosition();;
             int position_destination = destination.getAdapterPosition();
             adapter.moveItem(position_origin, position_destination);
             //adapter.notifyItemMoved(position_origin,position_destination);
@@ -118,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_EVENEMENT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Evenement competence = new Evenement(data.getStringExtra(NouvelleEvenement.EXTRA_REPLY),
+            Evenement competence = new Evenement(data.getStringExtra(NouvelEvenement.EXTRA_REPLY),
                     adapter.getItemCount() + 1);
             unEvenementViewModel.insert(competence);
         } else {
@@ -144,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.supprime_tous_les_evenements) {
-            Toast.makeText(this, "Tous les évenements sont supprimés",
+            Toast.makeText(this, "Tous les évenements ont été supprimés",
                     Toast.LENGTH_SHORT).show();
             unEvenementViewModel.supprimeTous();
             return true;
